@@ -1,5 +1,5 @@
 {
   "max-worker" : 5,
   "from-address" : "AIFactory <no-reply@aifactory.page>",
-  "aif-api-url": "http://localhost:3045/api"   
+  "aif-api-url": "https://aif-test.aifactory.space"   
 }
