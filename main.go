@@ -193,7 +193,7 @@ func (job *JobData) Process() error {
 				fmt.Println(err)									
 			}
 			//fmt.Println(output)
-			time.Sleep(time.Millisecond * 50)
+			//time.Sleep(time.Millisecond * 50)
 		}
 
 	} else if job.JobType == 1 {
@@ -250,12 +250,12 @@ func (job *JobData) Process() error {
 				Source: aws.String(viper.GetString(("from-address"))),				
 			}
 		
-			output, err := client_ses.SendEmail(context.TODO(), input)
+			_, err := client_ses.SendEmail(context.TODO(), input)
 			if err != nil {
 				fmt.Println(err)									
 			}
-			fmt.Println(output)
-			time.Sleep(time.Millisecond * 50)
+			//fmt.Println(output)
+			//time.Sleep(time.Millisecond * 50)
 		}
 	}
 
