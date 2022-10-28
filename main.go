@@ -197,8 +197,8 @@ func (job *JobData) Process() error {
 		}
 
 	} else if job.JobType == 1 {
-		// url := fmt.Sprintf("%v/user/email", viper.GetString("aif-api-url"))
-		url := fmt.Sprintf("%v/user/aif-email", viper.GetString("aif-api-url"))
+		url := fmt.Sprintf("%v/user/email", viper.GetString("aif-api-url"))
+		//url := fmt.Sprintf("%v/user/aif-email", viper.GetString("aif-api-url"))
 		resp, err := http.Get(url)
 		if err != nil {			
 			return err
