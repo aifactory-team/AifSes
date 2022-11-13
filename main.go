@@ -17,7 +17,7 @@ import (
 
 	"encoding/json"
 	"io/ioutil"	
-	"time"
+	// "time"
 )
 
 var Donewait sync.WaitGroup
@@ -190,7 +190,7 @@ func (job *JobData) Process() error {
 		
 			_, err := client_ses.SendEmail(context.TODO(), input)
 			if err != nil {
-				fmt.Println(err)									
+				fmt.Println(err.Error())									
 			}
 			//fmt.Println(output)
 			//time.Sleep(time.Millisecond * 50)
@@ -223,7 +223,7 @@ func (job *JobData) Process() error {
 		subject := "[인공지능팩토리] 이메일 인증 요청"
 		
 
-		for _,item := range userList {
+		for i ,item := range userList {
 			link := viper.GetString("aif-api-url") + "/finish-confirmation?email=" + item.Email + "&id=" + item.Id
 			contents := `<h4>안녕하세요.</h4><h4>인공지능팩토리 서비스를 이용해주셔서 진심으로 감사드립니다.</h4>
 			<h4>아래 '메일 인증' 링크을 클릭하여 인증을 완료해 주세요.</h4><a style="font-size:14px;" href="` + link + `">메일인증</a>	<h4>감사합니다.</h4><h4>--------</h4><h4>이 메일은 발신전용입니다.</h4>`
@@ -252,8 +252,10 @@ func (job *JobData) Process() error {
 		
 			_, err := client_ses.SendEmail(context.TODO(), input)
 			if err != nil {
-				fmt.Println(err)									
+				fmt.Println(err.Error())									
+				fmt.Println(item.Email)
 			}
+			fmt.Println(i)
 			//fmt.Println(output)
 			//time.Sleep(time.Millisecond * 50)
 		}
